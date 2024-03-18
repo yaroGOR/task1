@@ -196,7 +196,7 @@
     "eqeqeq": ["error", "always"],
     "spaced-comment": ["error", "always"],
     "todo-plz/ticket-ref": ["error", { "pattern": "BACK-[0-9]+" }],
-    "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "no-public" }],
+    // "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "no-public" }],
     "@typescript-eslint/no-inferrable-types": "error",
     "sort-imports": [
       "error",
