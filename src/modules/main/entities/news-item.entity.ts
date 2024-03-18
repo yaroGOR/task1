@@ -11,7 +11,7 @@ import {
 
 import { NewsItemTranslationEntity } from './news-translation.entity'
 
-@Entity('news_item')
+@Entity('news_items')
 export class NewsItemEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string

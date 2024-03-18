@@ -3,7 +3,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 
 import { NewsItemEntity } from 'src/modules/main/entities/news-item.entity'
 
-@Entity('news_item_translation')
+@Entity('news_item_translations')
 export class NewsItemTranslationEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
