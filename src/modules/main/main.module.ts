@@ -2,18 +2,18 @@ import { Module } from '@nestjs/common'
 import { ScheduleModule } from '@nestjs/schedule'
 import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { ProjectEntity } from 'src/modules/main/entities/project.entity'
+import { NewsItemEntity } from 'src/modules/main/entities/news-item.entity'
+import { NewsItemTranslationEntity } from 'src/modules/main/entities/news-translation.entity'
 
-import { AppController } from 'src/modules/main/controllers/app.controller'
-import { ProjectController } from 'src/modules/main/controllers/project.controller'
+import { NewsItemController } from 'src/modules/main/controllers/news-item.controller'
 
-import { ProjectService } from 'src/modules/main/services/project.service'
+import { NewsService } from 'src/modules/main/services/news.service'
 
-import { ProjectDataMapper } from 'src/modules/main/data-mappers/project.data-mapper'
+import { NewsDataMapper } from 'src/modules/main/data-mappers/news-item.data-mapper'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ProjectEntity]), ScheduleModule.forRoot()],
-  controllers: [AppController, ProjectController],
-  providers: [ProjectService, ProjectDataMapper],
+  imports: [TypeOrmModule.forFeature([NewsItemEntity, NewsItemTranslationEntity]), ScheduleModule.forRoot()],
+  controllers: [NewsItemController],
+  providers: [NewsService, NewsDataMapper],
 })
 export class MainModule {}
