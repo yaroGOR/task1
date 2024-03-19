@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common'
+import { ScheduleModule } from '@nestjs/schedule'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import * as dotenv from 'dotenv'
 import { CommandModule } from 'nestjs-command'
 
 import { DatabaseNamingStrategy } from 'src/db/database-naming.strategy'
 
-import { MainModule } from 'src/modules/main/main.module'
+import { NewsModule } from 'src/modules/news/news.module'
 
 dotenv.config()
 
@@ -23,7 +24,8 @@ dotenv.config()
       migrations: [`${__dirname}/**/migrations/*{.js,.ts}`],
     }),
     CommandModule,
-    MainModule,
+    NewsModule,
+    ScheduleModule.forRoot(),
   ],
   controllers: [],
   providers: [],

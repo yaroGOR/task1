@@ -1,7 +1,7 @@
-import { LanguageSlugEnum } from 'src/modules/main/enums/language.enum'
+import { LanguageSlugEnum } from 'src/modules/news/enums/language.enum'
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 
-import { NewsItemEntity } from 'src/modules/main/entities/news-item.entity'
+import { NewsItemEntity } from 'src/modules/news/entities/news-item.entity'
 
 @Entity('news_item_translations')
 export class NewsItemTranslationEntity {
