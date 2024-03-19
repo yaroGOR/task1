@@ -4,17 +4,24 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
 
-import { NewsItemTranslationEntity } from './news-translation.entity'
+import { CategoryEntity } from 'src/modules/categories/entities/category.entity'
+import { NewsItemTranslationEntity } from 'src/modules/news/entities/news-translation.entity'
 
 @Entity('news_items')
 export class NewsItemEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
+
+  @ManyToOne(() => CategoryEntity, (category) => category.news_item, { eager: true })
+  @JoinColumn({ name: 'category_id' })
+  news_category?: CategoryEntity
 
   @OneToMany(() => NewsItemTranslationEntity, (translation) => translation.news_item, {
     eager: true,
@@ -26,7 +33,7 @@ export class NewsItemEntity {
   @Column({ default: false })
   is_published: boolean
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'date' })
   published_date: string
 
   @CreateDateColumn()

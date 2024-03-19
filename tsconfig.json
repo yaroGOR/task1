@@ -19,7 +19,13 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "src/*": ["./src/*"]
+      "*": ["node_modules/*", "*", "./src/*"]
     }
   },
+  "files": ["src/global.d.ts"],
+  "include": ["src/**/*", "src/global.d.ts"],
+  "ts-node": {
+    "files": true,
+    "require": ["tsconfig-paths/register"]
+  }
 }
