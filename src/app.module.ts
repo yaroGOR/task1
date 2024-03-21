@@ -3,10 +3,13 @@ import { ScheduleModule } from '@nestjs/schedule'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import * as dotenv from 'dotenv'
 import { CommandModule } from 'nestjs-command'
+import { LoggerModule } from 'nestjs-pino'
+
+import { loggerOptions } from 'src/logger.config'
 
 import { DatabaseNamingStrategy } from 'src/db/database-naming.strategy'
 
-import { NewsModule } from 'src/modules/news/news.module'
+import { MainModule } from 'src/modules/main/main.module'
 
 dotenv.config()
 
@@ -24,8 +27,9 @@ dotenv.config()
       migrations: [`${__dirname}/**/migrations/*{.js,.ts}`],
     }),
     CommandModule,
-    NewsModule,
+    MainModule,
     ScheduleModule.forRoot(),
+    LoggerModule.forRoot(loggerOptions),
   ],
   controllers: [],
   providers: [],

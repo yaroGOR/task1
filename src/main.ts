@@ -4,6 +4,7 @@ import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import * as bodyParser from 'body-parser'
 import * as dotenv from 'dotenv'
+import { Logger, LoggerErrorInterceptor } from 'nestjs-pino'
 
 import { AppModule } from 'src/app.module'
 
@@ -18,9 +19,12 @@ async function bootstrap(): Promise<void> {
   app.use(bodyParser.json({ limit: '50mb' }))
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
   app.useGlobalPipes(new ValidationPipe())
+  app.useLogger(app.get(Logger))
+  app.useGlobalInterceptors(new LoggerErrorInterceptor())
 
   app.enableCors({
-    origin: process.env.CORS_ORIGINS.split(','),
+    // origin: process.env.CORS_ORIGINS.split(','),
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   })
